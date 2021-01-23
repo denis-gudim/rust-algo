@@ -6,7 +6,7 @@ Just another one repository with simple algorithms implementation based on Rust 
 
 ### 1. Bubble sort
 
-```rs
+```rust,no_run
 use std::cmp;
 
 fn sort<T: cmp::Ord>(list: &mut [T]) {
@@ -22,7 +22,7 @@ fn sort<T: cmp::Ord>(list: &mut [T]) {
 
 ### 2.1. Quick sort (Lomuto partition scheme)
 
-```rs
+```rust,no_run
 use std::cmp;
 
 fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
@@ -47,7 +47,7 @@ fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
 
 ### 2.2. Quick sort (Hoare partition scheme)
 
-```rs
+```rust,no_run
 use std::cmp;
 
 fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
