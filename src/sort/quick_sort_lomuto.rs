@@ -1,6 +1,4 @@
-use std::cmp;
-
-pub fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
+pub fn sort<T: Ord>(list: &mut [T], low: usize, high: usize) {
 	if high > low {
 		let mut i = low;
 

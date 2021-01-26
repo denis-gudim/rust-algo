@@ -1,10 +1,14 @@
-pub fn sort<T: Ord>(list: &mut [T]) {
-	for _ in 0..list.len(){
-		for i in 1..list.len(){
-			if list[i-1] > list[i] {
-				list.swap(i-1, i);
-			}
+pub fn sort<T: Ord + Copy>(list: &mut [T]) {
+	for i in 1..list.len(){
+		let mut j = i;
+		let tmp = list[i];
+
+		while j > 0 && list[j - 1] > tmp {
+			list[j] = list[j - 1];
+			j -= 1;
 		}
+
+		list[j] = tmp;
 	}
 }
 
@@ -14,7 +18,7 @@ mod tests {
 	use rand::{distributions::Uniform, Rng};
 
 	#[test]
-	fn bubble_sort_test() {
+	fn insertion_sort_test() {
 		// Arrange
 		let mut rng = rand::thread_rng();
 		let range = Uniform::new(0, 100);

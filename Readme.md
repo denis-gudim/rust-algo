@@ -7,9 +7,7 @@ Just another one repository with simple algorithms implementation based on Rust 
 ### 1. Bubble sort
 
 ```rust,no_run
-use std::cmp;
-
-fn sort<T: cmp::Ord>(list: &mut [T]) {
+fn sort<T: Ord>(list: &mut [T]) {
 	for _ in 0..list.len(){
 		for i in 1..list.len(){
 			if list[i-1] > list[i] {
@@ -23,9 +21,7 @@ fn sort<T: cmp::Ord>(list: &mut [T]) {
 ### 2.1. Quick sort (Lomuto partition scheme)
 
 ```rust,no_run
-use std::cmp;
-
-fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
+fn sort<T: Ord>(list: &mut [T], low: usize, high: usize) {
 	if high > low {
 		let mut i = low;
 
@@ -48,9 +44,7 @@ fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
 ### 2.2. Quick sort (Hoare partition scheme)
 
 ```rust,no_run
-use std::cmp;
-
-fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
+fn sort<T: Ord>(list: &mut [T], low: usize, high: usize) {
 	if high > low {
 		let mut i = low;
 		let mut j = high;
@@ -69,6 +63,24 @@ fn sort<T: cmp::Ord>(list: &mut [T], low: usize, high: usize) {
 		
 		sort(list, low, j);
 		sort(list, j + 1, high);
+	}
+}
+```
+
+### 3. Insertion sort
+
+```rust,no_run
+fn sort<T: Ord + Copy>(list: &mut [T]) {
+	for i in 1..list.len(){
+		let mut j = i;
+		let tmp = list[i];
+
+		while j > 0 && list[j - 1] > tmp {
+			list[j] = list[j - 1];
+			j -= 1;
+		}
+
+		list[j] = tmp;
 	}
 }
 ```
